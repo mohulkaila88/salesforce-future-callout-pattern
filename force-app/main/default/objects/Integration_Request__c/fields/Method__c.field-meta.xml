@@ -29,6 +29,11 @@
                 <default>false</default>
                 <label>DELETE</label>
             </value>
+            <value>
+                <fullName>GET</fullName>
+                <default>false</default>
+                <label>GET</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

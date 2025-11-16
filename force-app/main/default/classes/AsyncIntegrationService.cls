@@ -23,15 +23,13 @@ public with sharing class AsyncIntegrationService {
             return;
         }
 
-        markAsProcessing(queuedRequests);
+        //markAsProcessing(queuedRequests);
 
         Http http = getHttpClient();
         List<Integration_Request__c> updates = new List<Integration_Request__c>();
 
         for (Integration_Request__c requestRecord : queuedRequests) {
-            Integration_Request__c updateRecord = new Integration_Request__c(
-                Id = requestRecord.Id
-            );
+            Integration_Request__c updateRecord = new Integration_Request__c(Id = requestRecord.Id);
             try {
                 HttpRequest httpRequest = buildHttpRequest(requestRecord);
                 HttpResponse response = http.send(httpRequest);
@@ -112,6 +110,7 @@ public with sharing class AsyncIntegrationService {
     }
 
     private static String truncateError(String message) {
+        System.Debug('+++message: ' + message);
         if (message == null) {
             return null;
         }
